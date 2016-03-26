@@ -15,7 +15,7 @@ public class Problem4_CopyJpgFile {
             while ((readBytes = copyStream.read(buffer, 0, buffer.length)) > 0) {
                 pasteStream.write(buffer, 0, readBytes);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
