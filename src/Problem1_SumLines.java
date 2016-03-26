@@ -7,8 +7,8 @@ public class Problem1_SumLines {
         File file = new File("lines.txt");
         String sRead;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while ((sRead = reader.readLine()) != null) {
+        try (BufferedReader bR = new BufferedReader(new FileReader(file))) {
+            while ((sRead = bR.readLine()) != null) {
                 System.out.println(sumSymbols(sRead));
             }
         } catch (Exception ex) {
