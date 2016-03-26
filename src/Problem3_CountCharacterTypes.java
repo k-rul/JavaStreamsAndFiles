@@ -1,10 +1,8 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class Problem3_CountCharacterTypes {
     public static void main(String[] args) {
-        File file = new File("words.txt");
+        File fileRead = new File("words.txt");
         String sRedIn;
         String sFinal = "";
 
@@ -12,12 +10,12 @@ public class Problem3_CountCharacterTypes {
         int consonants = 0;
         int pMarks = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileRead))) {
             while ((sRedIn = br.readLine()) != null) {
                 sFinal = sFinal.concat(sRedIn);
             }
         } catch (Exception ex) {
-            System.out.println("Error with file writing!");
+            System.out.println("Error with file reading!");
         }
 
         for (char c : sFinal.toCharArray()) {
@@ -42,6 +40,15 @@ public class Problem3_CountCharacterTypes {
                     break;
             }
         }
+
+        File fileWrite = new File("count-chars.txt");
+
+        try (BufferedWriter bw = new BufferedWriter( new PrintWriter(new FileWriter(fileWrite, false)))){
+                bw.write(String.format("Vowels: %d%nConsonants: %d%nPunctuation: %d", vowels, consonants, pMarks));
+        }catch (Exception ex){
+            System.out.println("Error with file writing!");
+        }
+
         System.out.printf("Vowels: %d\nConsonants: %d\nPunctuation: %d", vowels, consonants, pMarks);
     }
 }
