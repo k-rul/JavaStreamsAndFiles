@@ -7,7 +7,6 @@ public class Problem4_CopyJpgFile {
         File copyFile = new File("pic.jpg");
         File pasteFile = new File("my-copied- picture.jpg");
         byte[] buffer;
-        int readBytes;
 
         try (FileInputStream copyStream = new FileInputStream(copyFile);
              FileOutputStream pasteStream = new FileOutputStream(pasteFile)) {
