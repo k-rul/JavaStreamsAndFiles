@@ -15,14 +15,12 @@ public class Problem5_SaveAnArrayListOfDoubles {
 
         List<Double> toRead = new ArrayList<Double>();
 
-
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
              ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
 
             oos.writeObject(toSave);
 
             toRead = (List<Double>) ois.readObject();
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
